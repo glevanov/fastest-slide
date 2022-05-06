@@ -1,0 +1,14 @@
+{
+  "name": "fastest-slide",
+  "main": "src/index.mjs",
+  "scripts": {
+    "test": "uvu"
+  },
+  "author": "Grigoriy Levanov <gregory@levanov.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "8.14.0",
+    "eslint-plugin-import": "2.26.0",
+    "uvu": "0.5.3"
+  }
+}
