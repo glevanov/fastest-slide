@@ -2,7 +2,7 @@
   "name": "fastest-slide",
   "main": "src/index.mjs",
   "scripts": {
-    "test": "uvu"
+    "test": "uvu tests"
   },
   "author": "Grigoriy Levanov <gregory@levanov.io>",
   "license": "MIT",
