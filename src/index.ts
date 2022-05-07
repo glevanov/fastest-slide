@@ -1,15 +1,10 @@
 import { resolve } from 'node:path';
 
-import { IdProvider, readFile } from './helpers.mjs';
+import { IdProvider, readFile } from './helpers';
 
 const path = resolve('tests/fixtures/1.txt');
 
-/**
- *
- * @param lines {string[]}
- * @returns {{layers: number[], layersNumber: number}}
- */
-const parseLines = (lines) => {
+const parseLines = (lines: string[]) => {
 	const [layersNumber, ...layers] = lines;
 	const parsedLayers = layers.map((layer) => layer.split(' ').map(Number));
 	return {
@@ -18,25 +13,16 @@ const parseLines = (lines) => {
 	};
 };
 
-/**
- * @typedef GraphNode
- * @type {object}
- * @property {number} weight
- * @property {number[]} connections
- */
+interface GraphNode {
+	weight: number
+	connections: number[] | null
+}
 
-/**
- * @typedef Graph
- * @type {Object.<number,GraphNode>}
- */
+type Graph = Record<number, GraphNode>;
 
-/**
- * @param layers {number[]}
- * @returns {Graph}
- */
-const makeGraph = (layers) => {
+const makeGraph = (layers: number[][]): Graph => {
 	const idProvider = new IdProvider();
-	const graph = {};
+	const graph: Graph = {};
 	layers.forEach((layer, layerIndex) => {
 		layer.forEach((node, nodeIndex) => {
 			const isLastLayer = layerIndex === layers.length - 1;
@@ -52,5 +38,5 @@ const makeGraph = (layers) => {
 };
 
 const parsed = parseLines(readFile(path));
-const graph = makeGraph(parsed.layers)
+const graph = makeGraph(parsed.layers);
 console.log(graph);

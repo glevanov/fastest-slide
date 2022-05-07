@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "baseUrl": ".",
+    "types": [
+      "node",
+    ]
+  }
+}
