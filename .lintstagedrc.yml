@@ -1,0 +1,2 @@
+"*.js,*.mjs":
+  - npm run lint:eslint

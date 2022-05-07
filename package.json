@@ -2,13 +2,17 @@
   "name": "fastest-slide",
   "main": "src/index.mjs",
   "scripts": {
-    "test": "uvu tests"
+    "test": "uvu tests",
+    "lint:eslint": "eslint . --ext .js,.mjs --fix",
+    "postinstall": "npx simple-git-hooks"
   },
   "author": "Grigoriy Levanov <gregory@levanov.io>",
   "license": "MIT",
   "devDependencies": {
     "eslint": "8.14.0",
     "eslint-plugin-import": "2.26.0",
+    "lint-staged": "12.4.1",
+    "simple-git-hooks": "2.7.0",
     "uvu": "0.5.3"
   }
 }
