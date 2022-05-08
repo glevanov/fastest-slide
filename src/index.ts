@@ -1,42 +1,17 @@
-import { resolve } from 'node:path';
+import { createInterface } from 'node:readline';
 
-import { IdProvider, readFile } from './helpers';
+import { parseLines, makeGraph } from './graph';
 
-const path = resolve('tests/fixtures/1.txt');
+const readline = createInterface({
+	input: process.stdin,
+});
 
-const parseLines = (lines: string[]) => {
-	const [layersNumber, ...layers] = lines;
-	const parsedLayers = layers.map((layer) => layer.split(' ').map(Number));
-	return {
-		layersNumber: Number(layersNumber),
-		layers: parsedLayers,
-	};
-};
+const lines: string[] = [];
 
-interface GraphNode {
-	weight: number
-	connections: number[] | null
-}
+readline.on('line', (line) => lines.push(line));
 
-type Graph = Record<number, GraphNode>;
-
-const makeGraph = (layers: number[][]): Graph => {
-	const idProvider = new IdProvider();
-	const graph: Graph = {};
-	layers.forEach((layer, layerIndex) => {
-		layer.forEach((node, nodeIndex) => {
-			const isLastLayer = layerIndex === layers.length - 1;
-			const nextLayer = layers[layerIndex + 1];
-			const connections = isLastLayer ? null : [nextLayer[nodeIndex], nextLayer[nodeIndex + 1]];
-			graph[idProvider.getNext()] = {
-				weight: node,
-				connections,
-			};
-		});
-	});
-	return graph;
-};
-
-const parsed = parseLines(readFile(path));
-const graph = makeGraph(parsed.layers);
-console.log(graph);
+readline.on('close', () => {
+	const parsed = parseLines(lines);
+	const graph = makeGraph(parsed);
+	console.log(graph);
+});
