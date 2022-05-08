@@ -2,7 +2,7 @@
   "name": "fastest-slide",
   "main": "src/index.ts",
   "scripts": {
-    "test": "uvu tests",
+    "test": "uvu -r tsm tests",
     "lint:eslint": "eslint . --ext .ts --fix",
     "lint:tsc": "tsc",
     "postinstall": "npx simple-git-hooks"
@@ -18,6 +18,7 @@
     "lint-staged": "12.4.1",
     "simple-git-hooks": "2.7.0",
     "ts-node": "10.7.0",
+    "tsm": "2.2.1",
     "typescript": "4.6.4",
     "uvu": "0.5.3"
   }

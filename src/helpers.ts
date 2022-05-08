@@ -1,7 +1,7 @@
 export class IdProvider {
-	id = 0;
+	private id = 0;
 
-	getNext() {
+	public getNext() {
 		this.id = this.id + 1;
 		return this.id;
 	}
