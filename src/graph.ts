@@ -12,8 +12,8 @@ type ParsedNode = Pick<GraphNode, 'id' | 'weight'>;
 
 export const parseLines = (lines: string[]): ParsedNode[][] => {
 	const idProvider = new IdProvider();
-	const [, ...layers] = lines;
-	return layers
+	const [length, ...layers] = lines;
+	return layers.slice(0, Number(length))
 		.map((layer) => layer.split(' ')
 			.map((weight) => ({
 				id: idProvider.getNext(),
