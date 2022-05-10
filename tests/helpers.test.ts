@@ -18,6 +18,7 @@ test('ID Provider', () => {
 test('fixtureFileReader', () => {
 	assert.type(fixtureFileReader, 'function');
 	const reader = fixtureFileReader('tests/fixtures');
+	assert.type(reader, 'function');
 	assert.snapshot(
 		JSON.stringify(reader('a.txt')),
 		JSON.stringify([ '4', '1', '2 3', '4 5 6', '7 8 9 10' ]),

@@ -2,13 +2,10 @@ import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 
 import { dijkstra } from '../src/dijkstra';
-import { makeGraphTheirWay } from '../src/graph';
+import { buildGraph } from '../src/graph';
 import { ParsedNode } from '../src/types';
 
-import parsedA from './fixtures/a-parsed.json';
-import parsedB from './fixtures/b-parsed.json';
-import parsedC from './fixtures/c-parsed.json';
-import parsedD from './fixtures/d-parsed.json';
+import { parsedA, parsedB, parsedC, parsedD } from './fixtures';
 
 const solutionA = { optimalCost: 14, optimalPath: [ 1, 2, 4, 7 ] };
 const solutionB = { optimalCost: 16, optimalPath: [ 1, 3, 5, 8 ] };
@@ -20,7 +17,7 @@ const solutionD = { optimalCost: 12, optimalPath: [ 1, 3, 6, 9 ] };
 
 const prepareData = (parsed: ParsedNode[][]) => {
 	const lastIds = parsed[parsed.length - 1].map((node) => node.id);
-	const graph = makeGraphTheirWay(parsed);
+	const graph = buildGraph(parsed);
 	return { graph, lastIds };
 };
 

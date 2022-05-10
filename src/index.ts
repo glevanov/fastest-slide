@@ -1,6 +1,6 @@
 import { createInterface } from 'node:readline';
 
-import { parseLines, makeGraphTheirWay } from './graph';
+import { parseLines, buildGraph } from './graph';
 import { dijkstra } from './dijkstra';
 
 const readline = createInterface({
@@ -15,7 +15,7 @@ readline.on('close', () => {
 	const parsed = parseLines(lines);
 	const lastIds = parsed[parsed.length - 1].map((node) => node.id);
 
-	const graph = makeGraphTheirWay(parsed);
+	const graph = buildGraph(parsed);
 	const result = dijkstra(graph, lastIds);
 
 	console.log(result);

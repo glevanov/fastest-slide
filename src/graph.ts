@@ -12,23 +12,7 @@ export const parseLines = (lines: string[]): ParsedNode[][] => {
 			})));
 };
 
-export const makeGraph = (layers: ParsedNode[][]): Graph => {
-	const graph: Graph = {};
-	layers.forEach((layer, layerIndex) => {
-		layer.forEach((node, nodeIndex) => {
-			const isLastLayer = layerIndex === layers.length - 1;
-			const nextLayer = layers[layerIndex + 1];
-			const connections = isLastLayer ? null : [nextLayer[nodeIndex].id, nextLayer[nodeIndex + 1].id];
-			graph[node.id] = {
-				...node,
-				connections: connections,
-			};
-		});
-	});
-	return graph;
-};
-
-export const makeGraphTheirWay = (layers: ParsedNode[][]) => {
+export const buildGraph = (layers: ParsedNode[][]): Graph => {
 	const graph: Record<number, Record<number, number>> = {};
 	graph[0] = { [layers[0][0].id]: layers[0][0].weight };
 	layers.forEach((layer, layerIndex) => {
