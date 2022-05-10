@@ -1,5 +1,6 @@
+import { Graph, ParsedNode } from '../types';
+
 import { IdProvider } from './helpers';
-import { Graph, ParsedNode } from './types';
 
 export const parseLines = (lines: string[]): ParsedNode[][] => {
 	const idProvider = new IdProvider();

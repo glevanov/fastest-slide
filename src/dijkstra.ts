@@ -1,5 +1,6 @@
+import { Graph } from '../types';
+
 type Costs = Record<number, number>;
-type Graph = Record<number, Record<number, number>>;
 
 const lowestCostNode = (costs: Costs, processed: number[]): number | null => {
 	return Object.keys(costs).reduce<null | number>((lowest, nodeKey) => {

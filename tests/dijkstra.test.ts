@@ -3,7 +3,7 @@ import * as assert from 'uvu/assert';
 
 import { dijkstra } from '../src/dijkstra';
 import { buildGraph } from '../src/graph';
-import { ParsedNode } from '../src/types';
+import { ParsedNode } from '../types';
 
 import { parsedA, parsedB, parsedC, parsedD } from './fixtures';
 
