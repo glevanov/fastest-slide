@@ -4,7 +4,7 @@
   "scripts": {
     "test": "uvu -r tsm tests",
     "lint:eslint": "eslint . --ext .ts --fix",
-    "lint:tsc": "tsc",
+    "lint:tsc": "tsc --noEmit",
     "postinstall": "npx simple-git-hooks"
   },
   "author": "Grigoriy Levanov <gregory@levanov.io>",
