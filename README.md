@@ -4,5 +4,5 @@
 Pipe `stdin` to `index.ts` to receive output.
 
 ```bash
-cat tests/fixtures/1.txt | ts-node src/index.ts
+cat tests/fixtures/a.txt | ts-node src/index.ts
 ```
