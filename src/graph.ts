@@ -5,6 +5,7 @@ import { IdProvider } from './helpers';
 export const parseLines = (lines: string[]): ParsedNode[][] => {
 	const idProvider = new IdProvider();
 	const [length, ...layers] = lines;
+	// console.log(layers.slice(0, Number(length)));
 	return layers.slice(0, Number(length))
 		.map((layer) => layer.split(' ')
 			.map((weight) => ({
