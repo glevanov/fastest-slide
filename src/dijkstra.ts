@@ -14,23 +14,20 @@ const lowestCostNode = (costs: Costs, processed: number[]): number | null => {
 	}, null);
 };
 
+const mapDefaultValueToIds = <Value>(ids: number[], defaultValue: Value) => ids.reduce<Record<number, Value>>((dictionary, id) => {
+	return {
+		...dictionary,
+		[id]: defaultValue,
+	};
+}, {});
+
 export const dijkstra = (graph: Graph, last: number[]) => {
 	const costs: Record<number, number> = {
 		...graph[0],
-		...(last.reduce((acc, curr) => {
-			return {
-				...acc,
-				[curr]: Infinity,
-			};
-		}, {})),
+		...mapDefaultValueToIds(last, Infinity),
 	};
 
-	const parents: Record<number, number | null> = { ...(last.reduce((acc, curr) => {
-		return {
-			...acc,
-			[curr]: null,
-		};
-	}, {})) };
+	const parents: Record<number, number | null> = mapDefaultValueToIds(last, null);
 
 	for (const child in graph[0]) {
 		parents[child] = 0;
