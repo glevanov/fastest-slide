@@ -43,21 +43,21 @@ export const dijkstra = (graph: Graph, last: number[]) => {
 	while (node) {
 		const cost = costs[node];
 		const children = graph[node];
-		for (const n in children) {
-			const newCost = cost + children[n];
-			if (!costs[n] || costs[n] > newCost) {
-				costs[n] = newCost;
-				parents[n] = node;
+		for (const childId in children) {
+			const newCost = cost + children[childId];
+			if (!costs[childId] || costs[childId] > newCost) {
+				costs[childId] = newCost;
+				parents[childId] = node;
 			}
 		}
 		processed.push(node);
 		node = lowestCostNode(costs, processed);
 	}
 
-	const endNodesCosts = last.map((id) => [id, costs[id]])
+	const lastNodesCosts = last.map((id) => [id, costs[id]])
 		.sort(([,firstCost], [,secondCost]) => firstCost - secondCost);
 
-	const [optimalId, optimalCost] = endNodesCosts[0];
+	const [optimalId, optimalCost] = lastNodesCosts[0];
 
 	const optimalPath = [optimalId];
 	let parent = parents[optimalId];
